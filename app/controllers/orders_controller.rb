@@ -25,7 +25,6 @@ class OrdersController < ApplicationController
     # empty hash means no products in cart :)
     update_cart({})
   end
-
   def perform_stripe_charge
     Stripe::Charge.create(
       source:      params[:stripeToken],
@@ -34,14 +33,12 @@ class OrdersController < ApplicationController
       currency:    'cad'
     )
   end
-
   def create_order(stripe_charge)
     order = Order.new(
       email: params[:stripeEmail],
       total_cents: cart_subtotal_cents,
       stripe_charge_id: stripe_charge.id, # returned by stripe
     )
-
     enhanced_cart.each do |entry|
       product = entry[:product]
       quantity = entry[:quantity]
@@ -49,11 +46,10 @@ class OrdersController < ApplicationController
         product: product,
         quantity: quantity,
         item_price: product.price,
-        total_price: product.price * quantity
+        total_price: product.price * quantity,
       )
     end
     order.save!
     order
   end
-
 end
