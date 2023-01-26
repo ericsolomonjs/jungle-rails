@@ -1,6 +1,11 @@
 class Admin::ProductsController < ApplicationController
+  http_basic_authenticate_with name: ENV.fetch("ADMIN_USER"), password: ENV.fetch("ADMIN_PASSWORD"), except: :index
 
   def index
+    render plain: "Restricted area"
+  end
+  
+  def edit
     @products = Product.order(id: :desc).all
   end
 
