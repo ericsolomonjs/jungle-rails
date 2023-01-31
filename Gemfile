@@ -4,7 +4,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 group :development, :test do
   gem 'rspec-rails', '~> 5.1'
   gem 'net-smtp', require: false
-  # ...
+  gem "cypress-rails"
+  gem 'database_cleaner-active_record'
 end
 
 
