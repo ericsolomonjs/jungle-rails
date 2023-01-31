@@ -1,6 +1,13 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+group :development, :test do
+  gem 'rspec-rails', '~> 5.1'
+  gem 'net-smtp', require: false
+  # ...
+end
+
+
 ruby '3.1.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
@@ -55,7 +62,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'dotenv-rails'
-gem 'rspec-rails'
+
 end
 
 group :development do
