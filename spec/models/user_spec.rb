@@ -91,6 +91,7 @@ RSpec.describe User, type: :model do
     end
 
     it "should allow user to login regardless of upper or lower case email" do
+      @user.save
       if @user.authenticate_with_credentials("dave@DAVE.com", "password")
         success = true
       end
@@ -98,6 +99,7 @@ RSpec.describe User, type: :model do
     end
 
     it "should allow user to log in successfully even if leading or trailing spaces are used for the email" do
+      @user.save
       if @user.authenticate_with_credentials("  dave@dave.com  ", "password")
         success = true
       end
