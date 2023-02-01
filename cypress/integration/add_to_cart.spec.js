@@ -1,4 +1,4 @@
-describe('Product Details page', () => {
+describe('Add to cart', () => {
   beforeEach(() => {
     //do stuff before each test
     console.log('new test')
@@ -9,6 +9,7 @@ describe('Product Details page', () => {
   })
 
   it('should add a product to cart', () => {
-    cy.get('.products').children().first().click()
+    cy.get('.products').get('.btn').click();
+    cy.get('.end-0 > .nav-link').should('contain', "My Cart (1)")
   })
 })
