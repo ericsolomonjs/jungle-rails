@@ -17,13 +17,10 @@ class User < ApplicationRecord
     self.first_name.strip
     self.last_name.strip
   end
-
   def authenticate_with_credentials(email, password) 
-    user = User.where(email: email.downcase.strip) 
+    user = User.where(email: email.downcase.strip).first 
     if user
-      if password == @password
-        return user
-      end
+      user.authenticate(password)
     end
   end
 

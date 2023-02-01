@@ -22,14 +22,13 @@
             </ul>
           </div>
         <% end %>
+        <br/>
 
         <div class="form-group">
           <%= form.label :name %>
-          <%= form.text_field :name, class: 'form-control' %>
+          <%= form.text_field :name, class: 'form-control', required: true %>
         </div>
-
-        
-
+        <br/>
         <%= form.submit 'Create Category', class: 'btn btn-primary' %>
       <% end %>
     </div>

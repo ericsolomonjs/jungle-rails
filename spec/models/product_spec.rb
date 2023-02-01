@@ -9,14 +9,12 @@ RSpec.describe Product, type: :model do
       name: "Plant name",
       price: 1.99,
       quantity: 9,
-      category: @category })
+      category: @category
+      })
     end
     # validation tests/examples here
     it "should save successfully" do
-      if @product.save 
-        bool= true
-      end
-      expect(bool).to be(true)
+      expect(@product.save).to be(true)
     end
 
     it "should throw error because name doesn't exist" do
